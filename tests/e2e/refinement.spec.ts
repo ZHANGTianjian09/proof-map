@@ -431,9 +431,21 @@ test("zoomed-in panning reaches every edge with the overview margin", async ({ p
   const area = (await page.locator(".map-area").boundingBox())!;
   const point = await canvasPoint(page);
   await page.mouse.move(point.x, point.y);
-  await page.keyboard.down("Control");
-  await page.mouse.wheel(0, -500);
-  await page.keyboard.up("Control");
+  // Wheel scaling differs between system Chrome and Playwright's Linux Chromium.
+  // Reach the zoom limit with bounded gestures before checking pan boundaries.
+  for (
+    let attempt = 0;
+    attempt < 5 && (await viewport(page)).zoom < 1.9999;
+    attempt++
+  ) {
+    const previousZoom = (await viewport(page)).zoom;
+    await page.keyboard.down("Control");
+    await page.mouse.wheel(0, -500);
+    await page.keyboard.up("Control");
+    await expect
+      .poll(async () => (await viewport(page)).zoom)
+      .toBeGreaterThan(previousZoom);
+  }
   await expect.poll(async () => (await viewport(page)).zoom).toBeCloseTo(2, 4);
   const bounds = () => page.locator(".math-node").evaluateAll((elements) => {
     const rects = elements.map((el) => el.getBoundingClientRect());

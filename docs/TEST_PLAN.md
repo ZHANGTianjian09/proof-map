@@ -15,6 +15,8 @@ CI=1 pnpm test:e2e
 
 Browser checks use the production build at `http://127.0.0.1:4173/proof-map/`. Rebuild after application changes. Port 4173 must be free when `CI=1` starts an owned server. An installed Chrome may be selected with `CI=1 PLAYWRIGHT_CHANNEL=chrome pnpm test:e2e`. Failure traces/screenshots and generated PDFs stay in ignored `.local/` paths. Keep browser inputs local and synthetic.
 
+Wheel-to-zoom scaling can differ between local Chrome and Linux Chromium. Tests that require the maximum zoom use bounded gestures and verify the resulting zoom before testing pan boundaries, rather than assuming one gesture reaches the limit.
+
 ## Coverage and acceptance
 
 | Area                           | Automated evidence                                        | Required behavior                                                                                                                                                     |
