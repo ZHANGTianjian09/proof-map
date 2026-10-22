@@ -1,0 +1,523 @@
+{
+  "schema_version": "1.0.0",
+  "paper": {
+    "id": "synthetic-mean-estimation",
+    "title": "Concentration & asymptotics of the sample mean",
+    "description": "A synthetic theoretical statistics example created for Proof Map. It does not reproduce a published paper. All numbering, page locations, and evidence excerpts belong to this illustrative document; relationship verification has not been performed.",
+    "sections": [
+      {
+        "id": "s1",
+        "title": "1 · Setup & definitions",
+        "kind": "section"
+      },
+      {
+        "id": "s2",
+        "title": "2 · Concentration",
+        "kind": "section"
+      },
+      {
+        "id": "s3",
+        "title": "3 · Asymptotic theory",
+        "kind": "section"
+      },
+      {
+        "id": "s4",
+        "title": "4 · Examples & limitations",
+        "kind": "section"
+      },
+      {
+        "id": "a",
+        "title": "A · Additional remarks",
+        "kind": "appendix"
+      }
+    ],
+    "metadata": {
+      "synthetic": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "a-iid",
+      "type": "assumption",
+      "label": "Assumption 1.1",
+      "number": "1.1",
+      "title": "Independent observations",
+      "statement": "Let $X_1,\\ldots,X_n$ be independent and identically distributed real-valued random variables with $\\mathbb{E}X_i=\\mu$ and $0<v=\\operatorname{Var}(X_i)<\\infty$.",
+      "section": "s1",
+      "source": {
+        "location": "Section 1, sampling model",
+        "page": 1
+      },
+      "role": "Sampling model",
+      "metadata": {
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "d-mean",
+      "type": "definition",
+      "label": "Definition 1.2",
+      "number": "1.2",
+      "title": "Sample mean",
+      "statement": "The sample mean is the estimator\n$$\\bar X_n=\\frac{1}{n}\\sum_{i=1}^{n}X_i.$$",
+      "section": "s1",
+      "source": {
+        "location": "Section 1, estimator",
+        "page": 1
+      },
+      "metadata": {
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "d-subg",
+      "type": "definition",
+      "label": "Definition 1.3",
+      "number": "1.3",
+      "title": "Sub-Gaussian variable",
+      "statement": "A centered random variable $Z$ is $\\sigma^2$-sub-Gaussian if, for every $\\lambda\\in\\mathbb{R}$,\n$$\\mathbb{E}e^{\\lambda Z}\\leq e^{\\sigma^2\\lambda^2/2}.$$ Here $\\sigma>0$ is a variance-proxy parameter.",
+      "section": "s1",
+      "source": {
+        "location": "Section 1, tail class",
+        "page": 2
+      },
+      "metadata": {
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "a-subg",
+      "type": "assumption",
+      "label": "Assumption 1.4",
+      "number": "1.4",
+      "title": "Sub-Gaussian noise",
+      "statement": "In addition to Assumption 1.1, each centered observation $X_i-\\mu$ is $\\sigma^2$-sub-Gaussian in the sense of Definition 1.3, with the same known parameter $\\sigma>0$.",
+      "section": "s1",
+      "source": {
+        "location": "Section 1, concentration hypothesis",
+        "page": 2
+      },
+      "role": "Tail condition",
+      "metadata": {
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "l-mgf",
+      "type": "lemma",
+      "label": "Lemma 2.1",
+      "number": "2.1",
+      "title": "MGF of the average",
+      "statement": "Under Assumptions 1.1 and 1.4, independence gives\n$$\\mathbb{E}\\exp\\!\\left(\\lambda(\\bar X_n-\\mu)\\right)\\leq\\exp\\!\\left(\\frac{\\sigma^2\\lambda^2}{2n}\\right),\\qquad\\lambda\\in\\mathbb{R}.$$",
+      "section": "s2",
+      "source": {
+        "location": "Section 2, MGF factorization",
+        "page": 3
+      },
+      "role": "Concentration tool"
+    },
+    {
+      "id": "l-chernoff",
+      "type": "lemma",
+      "label": "Lemma 2.2",
+      "number": "2.2",
+      "title": "Chernoff bound",
+      "statement": "For any real random variable $Z$, any $t>0$, and any $\\lambda>0$ for which the expectation is finite,\n$$\\mathbb{P}(Z\\geq t)\\leq e^{-\\lambda t}\\mathbb{E}e^{\\lambda Z}.$$ Apply the same inequality to $-Z$ for the lower tail.",
+      "section": "s2",
+      "source": {
+        "location": "Section 2, exponential Markov inequality",
+        "page": 3
+      },
+      "role": "Concentration tool"
+    },
+    {
+      "id": "t-concentration",
+      "type": "theorem",
+      "label": "Theorem 2.3",
+      "number": "2.3",
+      "title": "Finite-sample concentration",
+      "statement": "Under Assumptions 1.1 and 1.4, the sample mean satisfies, for every $t>0$,\n$$\\mathbb{P}\\!\\left(|\\bar X_n-\\mu|\\geq t\\right)\\leq 2\\exp\\!\\left(-\\frac{nt^2}{2\\sigma^2}\\right).$$\nThe conclusion is nonasymptotic and holds for every integer $n\\geq1$.",
+      "section": "s2",
+      "source": {
+        "location": "Section 2, main concentration result",
+        "page": 4
+      },
+      "role": "Main result",
+      "evidence": [
+        {
+          "source": {
+            "location": "Proof of Theorem 2.3",
+            "page": 4
+          },
+          "excerpt": "Combine Lemma 2.1 with Lemma 2.2, optimize over the positive parameter, and apply a union bound to the two tails."
+        }
+      ]
+    },
+    {
+      "id": "c-ci",
+      "type": "corollary",
+      "label": "Corollary 2.4",
+      "number": "2.4",
+      "title": "A confidence interval",
+      "statement": "Under the hypotheses of Theorem 2.3, for $0<\\alpha<1$, the interval\n$$I_n=\\left[\\bar X_n-\\sigma\\sqrt{\\frac{2\\log(2/\\alpha)}{n}},\\;\\bar X_n+\\sigma\\sqrt{\\frac{2\\log(2/\\alpha)}{n}}\\right]$$\nsatisfies $\\mathbb{P}(\\mu\\in I_n)\\geq1-\\alpha$.",
+      "section": "s2",
+      "source": {
+        "location": "Section 2, confidence interval",
+        "page": 4
+      }
+    },
+    {
+      "id": "l-variance",
+      "type": "lemma",
+      "label": "Lemma 3.1",
+      "number": "3.1",
+      "title": "Variance of the average",
+      "statement": "Under Assumption 1.1,\n$$\\mathbb{E}\\bar X_n=\\mu,\\qquad\\operatorname{Var}(\\bar X_n)=\\frac{v}{n}.$$\nThe variance identity follows because the centered cross terms have zero expectation.",
+      "section": "s3",
+      "source": {
+        "location": "Section 3, moments",
+        "page": 5
+      },
+      "role": "Technical lemma"
+    },
+    {
+      "id": "p-consistency",
+      "type": "proposition",
+      "label": "Proposition 3.2",
+      "number": "3.2",
+      "title": "Mean-square consistency",
+      "statement": "Under Assumption 1.1,\n$$\\mathbb{E}(\\bar X_n-\\mu)^2=\\frac{v}{n}\\longrightarrow0.$$\nIn particular, $\\bar X_n\\xrightarrow{\\mathbb{P}}\\mu$ by Chebyshev's inequality.",
+      "section": "s3",
+      "source": {
+        "location": "Section 3, consistency",
+        "page": 5
+      }
+    },
+    {
+      "id": "t-clt",
+      "type": "theorem",
+      "label": "Theorem 3.3",
+      "number": "3.3",
+      "title": "Asymptotic normality",
+      "statement": "Under Assumption 1.1 alone, the classical i.i.d. central limit theorem yields\n$$\\frac{\\sqrt{n}(\\bar X_n-\\mu)}{\\sqrt{v}}\\xrightarrow{d}\\mathcal{N}(0,1).$$\nNo sub-Gaussian assumption is required. This is a limiting distribution statement, not a finite-sample tail bound.",
+      "section": "s3",
+      "source": {
+        "location": "Section 3, normal approximation",
+        "page": 6
+      },
+      "role": "Main result"
+    },
+    {
+      "id": "e-gaussian",
+      "type": "example",
+      "label": "Example 4.1",
+      "number": "4.1",
+      "title": "Gaussian observations",
+      "statement": "If $X_i\\sim\\mathcal{N}(\\mu,\\sigma^2)$ independently, then $X_i-\\mu$ is $\\sigma^2$-sub-Gaussian with equality in the MGF inequality. Moreover, $\\bar X_n\\sim\\mathcal{N}(\\mu,\\sigma^2/n)$ exactly.",
+      "section": "s4",
+      "source": {
+        "location": "Section 4, Gaussian case",
+        "page": 7
+      }
+    },
+    {
+      "id": "claim-tails",
+      "type": "claim",
+      "label": "Claim 4.2",
+      "number": "4.2",
+      "title": "Finite variance is enough?",
+      "statement": "Candidate claim (false): every centered finite-variance random variable is sub-Gaussian for some finite variance proxy. Counterexample 4.3 refutes this assertion.",
+      "section": "s4",
+      "source": {
+        "location": "Section 4, rejected candidate claim",
+        "page": 7
+      },
+      "role": "Rejected claim"
+    },
+    {
+      "id": "ce-heavy",
+      "type": "counterexample",
+      "label": "Counterexample 4.3",
+      "number": "4.3",
+      "title": "Heavy-tailed observations",
+      "statement": "A Student $t$ random variable with three degrees of freedom has mean zero and variance $3$, but its MGF is infinite for every nonzero real parameter. It is therefore not sub-Gaussian. Independent copies satisfy Assumption 1.1 but not Assumption 1.4.",
+      "section": "s4",
+      "source": {
+        "location": "Section 4, finite variance without exponential tails",
+        "page": 7
+      }
+    },
+    {
+      "id": "p-mse",
+      "type": "proposition",
+      "label": "Proposition 3.4",
+      "number": "3.4",
+      "title": "Normalized mean-square error",
+      "statement": "Under Assumption 1.1, the unbiasedness of $\\bar X_n$ makes the variance formula of Lemma 3.1 equivalent to\n$$\\mathbb{E}\\left[\\bigl(\\sqrt{n}(\\bar X_n-\\mu)\\bigr)^2\\right]=v.$$",
+      "section": "s3",
+      "source": {
+        "location": "Section 3, equivalent moment formulation",
+        "page": 6
+      }
+    },
+    {
+      "id": "r-isolated",
+      "type": "remark",
+      "label": "Remark A.1",
+      "number": "A.1",
+      "title": "Beyond the sample mean",
+      "statement": "Robust mean estimators can be studied under weaker tail assumptions. This observation is not used by any result in this illustrative document and has no recorded relationships.",
+      "section": "a",
+      "source": {
+        "location": "Appendix A, research direction",
+        "page": 8
+      },
+      "role": "Research direction"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e01",
+      "source": "d-subg",
+      "target": "a-subg",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Assumption 1.4",
+            "page": 2
+          },
+          "excerpt": "Sub-Gaussian in the sense of Definition 1.3."
+        }
+      ]
+    },
+    {
+      "id": "e02",
+      "source": "a-iid",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Lemma 2.1",
+            "page": 3
+          },
+          "excerpt": "Under Assumptions 1.1 and 1.4, independence gives the MGF bound."
+        }
+      ]
+    },
+    {
+      "id": "e03",
+      "source": "a-subg",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Lemma 2.1",
+            "page": 3
+          },
+          "excerpt": "Under Assumptions 1.1 and 1.4, independence gives the MGF bound."
+        }
+      ]
+    },
+    {
+      "id": "e04",
+      "source": "d-mean",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "unverified",
+      "note": "The formula uses the sample-mean definition; this illustrative link is an inference, not a quoted proof citation."
+    },
+    {
+      "id": "e05",
+      "source": "l-mgf",
+      "target": "t-concentration",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Proof of Theorem 2.3",
+            "page": 4
+          },
+          "excerpt": "Combine Lemma 2.1 with Lemma 2.2."
+        }
+      ]
+    },
+    {
+      "id": "e06",
+      "source": "l-chernoff",
+      "target": "t-concentration",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Proof of Theorem 2.3",
+            "page": 4
+          },
+          "excerpt": "Combine Lemma 2.1 with Lemma 2.2."
+        }
+      ]
+    },
+    {
+      "id": "e07",
+      "source": "t-concentration",
+      "target": "c-ci",
+      "relation": "implies",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Corollary 2.4",
+            "page": 4
+          },
+          "note": "Substitute the stated confidence radius into Theorem 2.3."
+        }
+      ]
+    },
+    {
+      "id": "e08",
+      "source": "a-iid",
+      "target": "l-variance",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Lemma 3.1",
+            "page": 5
+          },
+          "excerpt": "Under Assumption 1.1."
+        }
+      ]
+    },
+    {
+      "id": "e09",
+      "source": "d-mean",
+      "target": "l-variance",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "unverified",
+      "note": "Shared estimator definition connects the concentration and moment branches."
+    },
+    {
+      "id": "e10",
+      "source": "l-variance",
+      "target": "p-consistency",
+      "relation": "implies",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Proposition 3.2",
+            "page": 5
+          },
+          "note": "The variance formula gives mean-square convergence."
+        }
+      ]
+    },
+    {
+      "id": "e11",
+      "source": "a-iid",
+      "target": "t-clt",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Theorem 3.3",
+            "page": 6
+          },
+          "excerpt": "Under Assumption 1.1 alone."
+        }
+      ]
+    },
+    {
+      "id": "e12",
+      "source": "d-mean",
+      "target": "t-clt",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "unverified",
+      "note": "The normalized statistic uses Definition 1.2."
+    },
+    {
+      "id": "e13",
+      "source": "e-gaussian",
+      "target": "d-subg",
+      "relation": "illustrates",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Example 4.1",
+            "page": 7
+          },
+          "excerpt": "Equality in the MGF inequality."
+        }
+      ]
+    },
+    {
+      "id": "e14",
+      "source": "d-subg",
+      "target": "e-gaussian",
+      "relation": "generalizes",
+      "origin": "inferred",
+      "verification": "unverified",
+      "note": "Sub-Gaussian variables include centered Gaussian variables as a special case. This forms a knowledge-graph cycle with the illustration relationship."
+    },
+    {
+      "id": "e15",
+      "source": "ce-heavy",
+      "target": "claim-tails",
+      "relation": "counterexample_to",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Claim 4.2 and Counterexample 4.3",
+            "page": 7
+          },
+          "excerpt": "Counterexample 4.3 refutes this assertion."
+        }
+      ]
+    },
+    {
+      "id": "e16",
+      "source": "l-variance",
+      "target": "p-mse",
+      "relation": "equivalent_to",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Proposition 3.4",
+            "page": 6
+          },
+          "note": "Under the common assumptions and unbiasedness, the moment identities differ only by scaling by n."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "purpose": "Synthetic schema and viewer demonstration; not a reproduction or independently verified proof."
+  }
+}

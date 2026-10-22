@@ -1,0 +1,82 @@
+[
+  {
+    "file": "missing-statement.json",
+    "path": "/nodes/0",
+    "message": "Missing required field \"statement\"."
+  },
+  {
+    "file": "duplicate-node-id.json",
+    "path": "/nodes/1/id",
+    "message": "Duplicate node ID \"lemma\"."
+  },
+  {
+    "file": "duplicate-edge-id.json",
+    "path": "/edges/1/id",
+    "message": "Duplicate edge ID \"lemma-to-theorem\"."
+  },
+  {
+    "file": "invalid-node-type.json",
+    "path": "/nodes/0/type",
+    "message": "Must be one of:"
+  },
+  {
+    "file": "unsupported-relation.json",
+    "path": "/edges/0/relation",
+    "message": "Must be one of:"
+  },
+  {
+    "file": "dangling-source.json",
+    "path": "/edges/0/source",
+    "message": "Unknown node \"missing\"."
+  },
+  {
+    "file": "dangling-target.json",
+    "path": "/edges/0/target",
+    "message": "Unknown node \"missing\"."
+  },
+  {
+    "file": "explicit-without-evidence.json",
+    "path": "/edges/0",
+    "message": "Missing required field \"evidence\"."
+  },
+  {
+    "file": "empty-evidence.json",
+    "path": "/edges/0/evidence",
+    "message": "must NOT have fewer than 1 items"
+  },
+  {
+    "file": "unknown-structural-field.json",
+    "path": "/nodes/0/source",
+    "message": "Unknown field \"url\"."
+  },
+  {
+    "file": "unsupported-version.json",
+    "path": "/schema_version",
+    "message": "Expected supported value \"1.0.0\"."
+  },
+  {
+    "file": "empty-section-catalog.json",
+    "path": "/nodes/0/section",
+    "message": "Unknown section \"setup\"."
+  },
+  {
+    "file": "wrong-page-type.json",
+    "path": "/nodes/0/source/page",
+    "message": "must be integer"
+  },
+  {
+    "file": "malformed.json",
+    "path": "/",
+    "message": "Invalid JSON syntax:"
+  },
+  {
+    "file": "duplicate-property.json",
+    "path": "/paper",
+    "message": "Duplicate JSON property \"title\""
+  },
+  {
+    "file": "escaped-duplicate-property.json",
+    "path": "/metadata",
+    "message": "Duplicate JSON property \"a/b~c\""
+  }
+]

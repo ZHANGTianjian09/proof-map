@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://zhangtianjian09.github.io/proof-map/schemas/proof-map.v1.schema.json",
+  "title": "Proof Map canonical paper graph, version 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "paper", "nodes", "edges"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "paper": { "$ref": "#/definitions/paper" },
+    "nodes": { "type": "array", "items": { "$ref": "#/definitions/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/definitions/edge" } },
+    "metadata": { "$ref": "#/definitions/metadata" }
+  },
+  "definitions": {
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "metadata": { "type": "object", "additionalProperties": true },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["location"],
+      "properties": {
+        "location": { "$ref": "#/definitions/text" },
+        "page": { "type": "integer", "minimum": 1 },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source"],
+      "properties": {
+        "source": { "$ref": "#/definitions/source" },
+        "excerpt": { "$ref": "#/definitions/text" },
+        "note": { "$ref": "#/definitions/text" },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "kind"],
+      "properties": {
+        "id": { "$ref": "#/definitions/text" },
+        "title": { "$ref": "#/definitions/text" },
+        "kind": { "enum": ["section", "appendix"] },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      }
+    },
+    "paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "$ref": "#/definitions/text" },
+        "title": { "$ref": "#/definitions/text" },
+        "authors": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/text" }
+        },
+        "year": { "type": "integer", "minimum": 1 },
+        "description": { "$ref": "#/definitions/text" },
+        "citation": { "$ref": "#/definitions/text" },
+        "sections": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/section" }
+        },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "label",
+        "title",
+        "statement",
+        "section",
+        "source"
+      ],
+      "properties": {
+        "id": { "$ref": "#/definitions/text" },
+        "type": {
+          "enum": [
+            "theorem",
+            "lemma",
+            "proposition",
+            "corollary",
+            "definition",
+            "assumption",
+            "example",
+            "counterexample",
+            "remark",
+            "claim"
+          ]
+        },
+        "label": { "$ref": "#/definitions/text" },
+        "number": { "$ref": "#/definitions/text" },
+        "title": { "$ref": "#/definitions/text" },
+        "statement": { "$ref": "#/definitions/text" },
+        "section": { "$ref": "#/definitions/text" },
+        "source": { "$ref": "#/definitions/source" },
+        "role": { "$ref": "#/definitions/text" },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/evidence" }
+        },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "target",
+        "relation",
+        "origin",
+        "verification"
+      ],
+      "properties": {
+        "id": { "$ref": "#/definitions/text" },
+        "source": { "$ref": "#/definitions/text" },
+        "target": { "$ref": "#/definitions/text" },
+        "relation": {
+          "enum": [
+            "uses",
+            "implies",
+            "equivalent_to",
+            "generalizes",
+            "illustrates",
+            "counterexample_to"
+          ]
+        },
+        "origin": { "enum": ["explicit", "inferred"] },
+        "verification": { "enum": ["unverified", "verified", "disputed"] },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/evidence" }
+        },
+        "note": { "$ref": "#/definitions/text" },
+        "metadata": { "$ref": "#/definitions/metadata" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "origin": { "const": "explicit" } } },
+          "then": { "properties": { "evidence": {} }, "required": ["evidence"] }
+        }
+      ]
+    }
+  }
+}

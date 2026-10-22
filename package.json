@@ -1,0 +1,44 @@
+{
+  "name": "proof-map",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A browser-local viewer for the logical architecture of mathematical papers.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@xyflow/react": "^12.10.0",
+    "ajv": "^8.17.1",
+    "elkjs": "^0.11.0",
+    "html-to-image": "^1.11.13",
+    "jsonc-parser": "^3.3.1",
+    "jspdf": "^4.2.1",
+    "katex": "^0.16.22",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "prettier": "^3.9.10",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.0",
+    "vitest": "^4.0.0"
+  }
+}

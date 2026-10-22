@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.local/
+# Paper-specific workspaces stay local unless publication is explicitly approved.
+/examples/real-papers/*
+!/examples/real-papers/README.md

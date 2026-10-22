@@ -1,0 +1,769 @@
+{
+  "schema_version": "1.0.0",
+  "paper": {
+    "id": "qa-statistics",
+    "title": "Synthetic QA note on concentration — not a publication",
+    "description": "Authored test data only. No claims of independent mathematical verification.",
+    "sections": [
+      {
+        "id": "setup",
+        "title": "1 · Setup",
+        "kind": "section"
+      },
+      {
+        "id": "results",
+        "title": "2–4 · Results and examples",
+        "kind": "section"
+      },
+      {
+        "id": "appendix",
+        "title": "A · Additional objects",
+        "kind": "appendix",
+        "metadata": {
+          "catalog": {
+            "order": 3
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "synthetic": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "a-independent",
+      "type": "assumption",
+      "label": "Assumption 1.1",
+      "title": "Independent centered observations",
+      "statement": "Let $X_1,\\ldots,X_n$ be independent with $\\mathbb{E}X_i=0$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Assumption 1.1",
+        "page": 1
+      },
+      "number": "1.1",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        },
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "a-subgaussian",
+      "type": "assumption",
+      "label": "Assumption 1.2",
+      "title": "Sub-Gaussian moment bound",
+      "statement": "For every $t\\in\\mathbb{R}$ and every $i$, $\\mathbb{E}e^{tX_i}\\leq e^{\\sigma^2t^2/2}$, where $\\sigma>0$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Assumption 1.2",
+        "page": 1
+      },
+      "number": "1.2",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        },
+        "scope": "global_context"
+      }
+    },
+    {
+      "id": "d-mean",
+      "type": "definition",
+      "label": "Definition 1.3",
+      "title": "Sample mean · 均值",
+      "statement": "Define $\\bar X_n=n^{-1}\\sum_{i=1}^n X_i$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Definition 1.3",
+        "page": 1
+      },
+      "number": "1.3",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        },
+        "scope": "local_proof"
+      }
+    },
+    {
+      "id": "d-radius",
+      "type": "definition",
+      "label": "Definition 1.4",
+      "title": "Local confidence radius",
+      "statement": "For $0<\\delta<1$, let $r_n(\\delta)=\\sigma\\sqrt{2\\log(2/\\delta)/n}$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Definition 1.4",
+        "page": 1
+      },
+      "number": "1.4",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        },
+        "scope": "local_proof"
+      }
+    },
+    {
+      "id": "l-mgf",
+      "type": "lemma",
+      "label": "Lemma 2.1",
+      "title": "Moment bound for the mean",
+      "statement": "Under Assumptions 1.1–1.2, $\\mathbb{E}e^{t\\bar X_n}\\leq e^{\\sigma^2t^2/(2n)}$ for every real $t$.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Lemma 2.1",
+        "page": 1
+      },
+      "number": "2.1",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      },
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA note, Lemma 2.1",
+            "page": 2
+          },
+          "excerpt": "Under Assumptions 1.1–1.2, $\\mathbb{E}e^{t\\bar X_n}\\leq e^{\\sigma^2t^2/(2n)}$ for every real $t$.",
+          "metadata": {
+            "authored": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "l-chernoff",
+      "type": "lemma",
+      "label": "Lemma 2.2",
+      "title": "Exponential Markov bound",
+      "statement": "For $t>0$, $\\Pr(Y\\geq u)\\leq e^{-tu}\\mathbb{E}e^{tY}$ whenever the expectation exists.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Lemma 2.2",
+        "page": 1
+      },
+      "number": "2.2",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "t-tail",
+      "type": "theorem",
+      "label": "Theorem 3.1",
+      "title": "Concentration of the mean",
+      "statement": "Under Assumptions 1.1–1.2, for $u>0$, $$\\Pr(|\\bar X_n|\\geq u)\\leq 2e^{-nu^2/(2\\sigma^2)}.$$",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Theorem 3.1",
+        "page": 1
+      },
+      "number": "3.1",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      },
+      "role": "Main result"
+    },
+    {
+      "id": "t-confidence",
+      "type": "theorem",
+      "label": "Theorem 3.2",
+      "title": "Confidence radius",
+      "statement": "Under Assumptions 1.1–1.2, $\\Pr(|\\bar X_n|\\geq r_n(\\delta))\\leq\\delta$ for $0<\\delta<1$.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Theorem 3.2",
+        "page": 1
+      },
+      "number": "3.2",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      },
+      "role": "Main result"
+    },
+    {
+      "id": "p-tail",
+      "type": "proposition",
+      "label": "Proposition 3.3",
+      "title": "Equivalent tail formulation",
+      "statement": "Under Assumptions 1.1–1.2, $\\Pr(|\\bar X_n|<u)\\geq 1-2e^{-nu^2/(2\\sigma^2)}$ for $u>0$.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Proposition 3.3",
+        "page": 1
+      },
+      "number": "3.3",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "c-consistency",
+      "type": "corollary",
+      "label": "Corollary 3.4",
+      "title": "Consistency",
+      "statement": "Under Assumptions 1.1–1.2 for all $n$ with fixed $\\sigma$, $\\bar X_n\\to0$ in probability.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Corollary 3.4",
+        "page": 1
+      },
+      "number": "3.4",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "e-normal",
+      "type": "example",
+      "label": "Example 4.1",
+      "title": "Gaussian observations",
+      "statement": "Independent $N(0,\\sigma^2)$ observations satisfy Assumptions 1.1–1.2.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Example 4.1",
+        "page": 1
+      },
+      "number": "4.1",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "e-sign",
+      "type": "example",
+      "label": "Example 4.2",
+      "title": "Random signs",
+      "statement": "Independent uniform signs $X_i\\in\\{-1,1\\}$ satisfy Assumption 1.2 with $\\sigma=1$.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Example 4.2",
+        "page": 1
+      },
+      "number": "4.2",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "ce-cauchy",
+      "type": "counterexample",
+      "label": "Counterexample 4.3",
+      "title": "Cauchy observations",
+      "statement": "For standard Cauchy observations, the exponential moment does not exist for nonzero real $t$.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Counterexample 4.3",
+        "page": 1
+      },
+      "number": "4.3",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "cl-all",
+      "type": "claim",
+      "label": "Claim 4.4",
+      "title": "Deliberately disputed claim",
+      "statement": "Every real-valued distribution satisfies a finite sub-Gaussian moment bound.",
+      "section": "results",
+      "source": {
+        "location": "Synthetic QA note, Claim 4.4",
+        "page": 1
+      },
+      "number": "4.4",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "r-appendix",
+      "type": "remark",
+      "label": "Remark A.1",
+      "title": "Isolated appendix note",
+      "statement": "This synthetic note does not discuss dependent observations.",
+      "section": "appendix",
+      "source": {
+        "location": "Synthetic QA note, Remark A.1",
+        "page": 1
+      },
+      "number": "A.1",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "id": "d-appendix",
+      "type": "definition",
+      "label": "Definition A.2",
+      "title": "Disconnected notation",
+      "statement": "Write $a\\vee b=\\max(a,b)$.",
+      "section": "appendix",
+      "source": {
+        "location": "Synthetic QA note, Definition A.2",
+        "page": 1
+      },
+      "number": "A.2",
+      "metadata": {
+        "audit": {
+          "tokens": [null, true, 0, "  raw  "],
+          "reviewer": null
+        },
+        "scope": "future_scope_value"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e01",
+      "source": "a-independent",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e01",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.0
+      }
+    },
+    {
+      "id": "e02",
+      "source": "a-subgaussian",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "unverified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.1
+      }
+    },
+    {
+      "id": "e03",
+      "source": "d-mean",
+      "target": "l-mgf",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "verified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e03",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.2
+      }
+    },
+    {
+      "id": "e04",
+      "source": "l-mgf",
+      "target": "t-tail",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "verified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.3
+      }
+    },
+    {
+      "id": "e05",
+      "source": "l-chernoff",
+      "target": "t-tail",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "disputed",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e05",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.4
+      }
+    },
+    {
+      "id": "e06",
+      "source": "l-mgf",
+      "target": "t-confidence",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "disputed",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.5
+      }
+    },
+    {
+      "id": "e07",
+      "source": "l-chernoff",
+      "target": "t-confidence",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e07",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.6
+      }
+    },
+    {
+      "id": "e08",
+      "source": "d-radius",
+      "target": "t-confidence",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "unverified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.7
+      }
+    },
+    {
+      "id": "e09",
+      "source": "t-tail",
+      "target": "t-confidence",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "verified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e09",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.8
+      }
+    },
+    {
+      "id": "e10",
+      "source": "t-tail",
+      "target": "p-tail",
+      "relation": "equivalent_to",
+      "origin": "inferred",
+      "verification": "verified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 0.9
+      }
+    },
+    {
+      "id": "e11",
+      "source": "t-tail",
+      "target": "p-tail",
+      "relation": "implies",
+      "origin": "explicit",
+      "verification": "disputed",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e11",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.0
+      }
+    },
+    {
+      "id": "e12",
+      "source": "p-tail",
+      "target": "t-tail",
+      "relation": "implies",
+      "origin": "inferred",
+      "verification": "disputed",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.1
+      }
+    },
+    {
+      "id": "e13",
+      "source": "t-tail",
+      "target": "c-consistency",
+      "relation": "implies",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e13",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.2
+      }
+    },
+    {
+      "id": "e14",
+      "source": "e-normal",
+      "target": "a-subgaussian",
+      "relation": "illustrates",
+      "origin": "inferred",
+      "verification": "unverified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.3
+      }
+    },
+    {
+      "id": "e15",
+      "source": "e-sign",
+      "target": "a-subgaussian",
+      "relation": "illustrates",
+      "origin": "explicit",
+      "verification": "verified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e15",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.4
+      }
+    },
+    {
+      "id": "e16",
+      "source": "ce-cauchy",
+      "target": "cl-all",
+      "relation": "counterexample_to",
+      "origin": "inferred",
+      "verification": "verified",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.5
+      }
+    },
+    {
+      "id": "e17",
+      "source": "t-tail",
+      "target": "t-confidence",
+      "relation": "generalizes",
+      "origin": "explicit",
+      "verification": "disputed",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e17",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.6
+      }
+    },
+    {
+      "id": "e18",
+      "source": "l-mgf",
+      "target": "t-tail",
+      "relation": "uses",
+      "origin": "inferred",
+      "verification": "disputed",
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.7
+      }
+    },
+    {
+      "id": "e19",
+      "source": "p-tail",
+      "target": "p-tail",
+      "relation": "equivalent_to",
+      "origin": "explicit",
+      "verification": "unverified",
+      "evidence": [
+        {
+          "source": {
+            "location": "Synthetic QA relationship e19",
+            "page": 2,
+            "metadata": {
+              "synthetic": true
+            }
+          },
+          "note": "Authored fixture relationship; not extracted from a publication.",
+          "metadata": {
+            "review": null
+          }
+        }
+      ],
+      "metadata": {
+        "synthetic": true,
+        "annotation": "Fixture status only; not Proof Map verification",
+        "weight": 1.8
+      }
+    }
+  ],
+  "metadata": {
+    "synthetic": true,
+    "purpose": "QA only",
+    "extensions": {
+      "nullable": null,
+      "flags": [true, false],
+      "unicode": "统计",
+      "__proto__": {
+        "retained": true
+      }
+    }
+  }
+}

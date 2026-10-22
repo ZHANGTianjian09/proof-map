@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "paper": {
+    "id": "qa-minimal",
+    "title": "Synthetic QA minimal graph"
+  },
+  "nodes": [
+    {
+      "id": "lemma",
+      "type": "lemma",
+      "label": "Lemma 1",
+      "title": "A nonnegative square",
+      "statement": "For $x\\in\\mathbb{R}$, $x^2\\geq 0$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Lemma 1"
+      }
+    },
+    {
+      "id": "theorem",
+      "type": "theorem",
+      "label": "Theorem 2",
+      "title": "Sum of squares",
+      "statement": "For $x,y\\in\\mathbb{R}$, $x^2+y^2\\geq 0$.",
+      "section": "setup",
+      "source": {
+        "location": "Synthetic QA note, Theorem 2"
+      }
+    },
+    {
+      "id": "definition",
+      "type": "definition",
+      "label": "Definition A.1",
+      "title": "Euclidean square",
+      "statement": "Define $q(x,y)=x^2+y^2$.",
+      "section": "Appendix A",
+      "source": {
+        "location": "Synthetic QA note, Definition A.1"
+      }
+    },
+    {
+      "id": "example",
+      "type": "example",
+      "label": "Example A.2",
+      "title": "An isolated example",
+      "statement": "For $x=y=0$, $q(x,y)=0$.",
+      "section": "Appendix A",
+      "source": {
+        "location": "Synthetic QA note, Example A.2"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "lemma-to-theorem",
+      "source": "lemma",
+      "target": "theorem",
+      "relation": "uses",
+      "origin": "explicit",
+      "verification": "unverified"
+    }
+  ]
+}
